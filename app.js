@@ -3,18 +3,21 @@ const app = Vue.createApp({
     return {
       counter: 0,
       name: "",
-      confirmedName: "",
+      rand: undefined,
+      rand2: undefined,
+      // confirmedName: "",
     };
   },
   methods: {
-    confirmInput() {
-      this.confirmedName = this.name;
-    },
+    // confirmInput() {
+    //   this.confirmedName = this.name;
+    //   this.resetInput(); //additional made by me
+    // },
     submitForm() {
       alert("Submitted!");
     },
     setName(event, lastName) {
-      this.name = event.target.value + " " + lastName;
+      this.name = event.target.value;
     },
     add(number) {
       this.counter += number;
@@ -24,6 +27,24 @@ const app = Vue.createApp({
         this.counter -= number;
       }
     },
+    resetInput() {
+      this.name = "";
+    },
+    getRandomNumber() {
+      this.rand = Math.random();
+    return this.rand;
+    },
+  },
+  computed:{
+    fullName(){
+      let rand = Math.random();
+      console.log(rand);
+      if (this.name === "") {        
+        return "";
+      } else {
+        return this.name + " " + "Lojko";
+      }
+    }
   },
 });
 
